@@ -2,12 +2,12 @@
 title: Spring MVC
 author: Pengyuanbing
 date: 2021-04-13 11:33:00 +0800
-categories: [Spring, Spring MVC]
-tags: [Spring, Spring MVC]
+categories: [Spring, Spring MVC, 未完待续]
+tags: [Spring, Spring MVC, 未完待续]
 pin: true
 ---
 
-深入浅出 Spring MVC 的工作原理.
+本文主要是深入浅出 Spring MVC 的工作原理; 理解各个服务组件的调用和使用方式, 简单的自定义使用这些组件(基类,接口).
 
 <https://github.com/iokays/Samples/tree/main/spring_web>
 
@@ -37,6 +37,13 @@ public class SpringMvcSample {
 hello
 ```
 
+## DispatcherServlet
+
+Spring MVC 围绕 Servlet 设计了DispatcherServlet.
+
+
+
+
 ## HandlerMethod
 
 我们先不管SpringBoot 是怎么启动, 我们现在只关心方法是怎么调用的.
@@ -53,8 +60,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new HandlerInterceptor() {
-            @Override
-            public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+            @OverrideException
+            public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws  {
                 if (handler instanceof HandlerMethod) {
                     HandlerMethod handlerMethod = (HandlerMethod) handler;
                     final ApiOperation apiOperation = handlerMethod.getMethodAnnotation(ApiOperation.class);
@@ -131,9 +138,11 @@ HandlerExecutionChain整合了Handler和Handler拦截器. 基于拦截器提供�
 
 ## HandlerInterceptor
 
-
-
 ## HandlerAdapter
+
+## HandlerMapping
+
+## FILTER
 
 
 

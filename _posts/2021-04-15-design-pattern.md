@@ -2,15 +2,13 @@
 title: 设计模式与UML
 author: Pengyuanbing
 date: 2021-04-13 11:33:00 +0800
-categories: [设计模式]
-tags: [设计模式, UML, Design Pattern]
+categories: [设计模式, 未完待续]
+tags: [设计模式, UML, Design Pattern, 未完待续]
 pin: true
 ---
 
 ## 工厂方法模式	Factory Method Pattern
-
 ## 抽象工厂模式	Abstract Factory Pattern
-
 ## 建造者模式	Builder Pattern
 ## 原型模式	Prototype Pattern
 ## 单例模式	Singleton Pattern

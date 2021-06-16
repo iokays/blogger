@@ -2,8 +2,8 @@
 title: Spring AOP
 author: Pengyuanbing
 date: 2021-04-13 11:33:00 +0800
-categories: [Spring, Spring AOP]
-tags: [Spring, Spring AOP, JDK动态代理, CGLIB, Aopalliance]
+categories: [Spring, Spring AOP, 未完待续]
+tags: [Spring, Spring AOP, JDK动态代理, CGLIB, Aopalliance, 未完待续]
 pin: true
 ---
 
