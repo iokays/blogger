@@ -17,10 +17,10 @@ timezone: Asia/Shanghai
 # --------------------------
 title:  彭元彬                         # the main title
 
-tagline: UML, 设计模式, 领域驱动设计   # it will display as the sub-title
+tagline: 分析模式, 设计模式, 领域驱动设计   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  用UML和设计模式分析JAVA常用框架原理.
+  利用分析模式和设计模式剖析JAVA源码.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''

@@ -1,0 +1,69 @@
+@startuml
+
+class 订单 {
+  dateReceived: Date[0..1]
+  isPrepaid: Boolean[1]
+  number: String[1]
+  price: Money
+  --
+  dispatch
+  close
+}
+
+note left of 订单
+  if(Order.customer.getCreditRating is poor) {
+      Order.isPrepaid must be true
+  }
+end note
+
+class 订单行 {
+  quantity: Integer
+  price: Money
+}
+
+订单 "1" -down-> "*" 订单行 : {有序}
+
+class 产品
+
+订单行 "*" -down-> "1" 产品
+
+class 客户 {
+  name[1]
+  address[0..1]
+  --
+  getCreditRating() String
+}
+
+class 公司客户 {
+  contractName
+  creditRating
+  creditLimit
+  --
+  billForMonth(Integer)
+  remind()
+}
+
+class 雇员 {
+}
+
+class 个人客户 {
+  creditCardNumber
+}
+
+订单 "*" -right-> "1" 客户 : 关联
+公司客户 "*" -down-> "0..1" 雇员 : 销售代表
+公司客户 -up-|> 客户
+个人客户 -up-|> 客户
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

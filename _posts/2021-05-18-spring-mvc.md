@@ -2,12 +2,12 @@
 title: Spring MVC
 author: Pengyuanbing
 date: 2021-04-13 11:33:00 +0800
-categories: [Spring, Spring MVC, 未完待续]
-tags: [Spring, Spring MVC, 未完待续]
+categories: [Spring, Spring MVC, Servlet, Tomcat, 未完待续]
+tags: [Spring, Spring MVC, Servlet, Tomcat, 未完待续]
 pin: true
 ---
 
-本文主要是深入浅出 Spring MVC 的工作原理; 理解各个服务组件的调用和使用方式, 简单的自定义使用这些组件(基类,接口).
+本文主要是深入浅出 Spring MVC 的工作原理; 理解基于Servlet, Tomcat各个服务组件的调用和使用方式, 简单的自定义使用这些组件(基类,接口).
 
 <https://github.com/iokays/Samples/tree/main/spring_web>
 
@@ -37,14 +37,43 @@ public class SpringMvcSample {
 hello
 ```
 
-## DispatcherServlet
-
-Spring MVC 围绕 Servlet 设计了DispatcherServlet.
+我们简单画下请求过程的时序图. 从图中Tomcat知道了Filter, Servlet的调用的顺序和位置. 也引出了Servlet容器的两大组件.
 
 
+![servlet_filter_servlet.png](/assets/img/spring_mvc/servlet_filter_servlet.png)
 
+## Filter
+
+Servlet的拦截器, 对请求数据进行预处理, 从Filter的接口文档说明, 有这9类的接口实现. 我在这里不会介绍这些Filter的具体业务逻辑. 可以看出,Filter我们一般用来做什么. 我会在Spring-Security中较为详细的解说.
+
+1) Authentication Filters
+2) Logging and Auditing Filters
+3) Image conversion Filters
+4) Data compression Filters
+5) Encryption Filters
+6) Tokenizing Filters
+7) Filters that trigger resource access events
+8) XSL/T filters
+9) Mime-type chain Filter
+
+## Servlet, DispatcherServlet
+
+执行完Filter后,忽略其他细节, 就会执行Servlet.service()方法. 用来处理请求数据. DispatcherServlet 是Servlet接口的一个实现. Spring MVC 围绕 Servlet 设计了DispatcherServlet. 时序图Servlet以后的对象,都是基于SpringMVC设计的一套来处理, 我们现在一起看看这些类.
+
+## HandlerExecutionChain
+
+
+HandlerExecutionChain整合了Handler和Handler拦截器. 基于拦截器提供了在DispatchServlet::doDispatch方法中的前置, handler::invoke和后置等调用.
+
+## HandlerAdapter
+
+
+## HandlerMapping
 
 ## HandlerMethod
+
+## HandlerInterceptor
+
 
 我们先不管SpringBoot 是怎么启动, 我们现在只关心方法是怎么调用的.
 
@@ -128,19 +157,7 @@ argumentResolvers保存的是各个基于HandlerMethodArgumentResolver的实现�
 我们先止步到此.
 
 
-## HandlerExecutionChain
 
-上述我们描述了invoke时,method的参数是怎么封装的, 现在我们再回过来看看, 在调试的时候,会发现HandlerMethod是被HandlerExecutionChain这个类封装的, 类图如下.
-
-![handler_execution_chain.png](/assets/img/spring_mvc/handler_execution_chain.png)
-
-HandlerExecutionChain整合了Handler和Handler拦截器. 基于拦截器提供了在DispatchServlet::doDispatch方法中的前置, handler::invoke和后置等调用.
-
-## HandlerInterceptor
-
-## HandlerAdapter
-
-## HandlerMapping
 
 ## FILTER
 
